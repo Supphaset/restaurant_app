@@ -6,6 +6,8 @@ import MenuScreen from './screens/MenuScreen';
 import TableScreen from './screens/TableScreen';
 import OrderScreen from './screens/OrderScreen';
 import OrderedScreen from './screens/OrderedScreen';
+import CashierScreen from './screens/CashierScreen';
+import CashierCheckScreen from './screens/CashierCheckScreen';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
           <Route path='/menu' component={MenuScreen}/>
           <Route path='/cart' component={OrderScreen}/>
           <Route path='/order' component={OrderedScreen}/>
+          <Route path='/cashier' component={CashierScreen}/>
+          <Route path='/check' component={CashierCheckScreen}/>
         </Container>
       </main>
       <Footer/>

@@ -31,6 +31,11 @@ export const tableReducer = (state = { table:'None',order:[]},action)=>{
                 ...state,
                 table:action.payload.table
             }
+        case 'CHECK_ORDER':
+            return{
+                ...state,
+                table:action.payload.table
+            }
         default:
 
             return state

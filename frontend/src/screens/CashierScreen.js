@@ -1,19 +1,33 @@
-import React from 'react'
-import { Button, Col, Row, Card, ListGroup } from 'react-bootstrap'
-import {useDispatch, useSelector} from 'react-redux'
-import { checkOrder } from '../action/tableAction'
+import React ,{useEffect,useState} from 'react'
+import axios from 'axios'
+import { Row,Card,ListGroup, Col } from 'react-bootstrap'
 
-
-const OrderedScreen = () => {
-    const table  = useSelector(state =>state.table.table)
-    const dispatch = useDispatch()
-    const checkOrderHandler = () => {
-        dispatch(checkOrder(table._id))
-    }
+const CashierScreen = () => {
+    const [tables, settable] = useState([])
+    useEffect(() => {
+        const fetchData = async() =>{
+            const {data} = await axios.get('/api/tables/cashier')
+            data.map((table) =>{
+            let tempname = []
+                table.order.map((item,i) =>{
+                    if(tempname.includes(item.name)){
+                        let j = tempname.indexOf(item.name)
+                        table.order[j].qty += item.qty
+                        table.order.splice(i,1)
+                    }else{
+                        tempname.push(item.name)
+                    }
+                })
+            })
+            settable(data)
+        }
+        fetchData()
+        
+    },[])
     return (
         <div>
-            <h1>Ordered Screen</h1>
-            {table.isOrder? 
+            <h1>CashierScreen</h1>
+            {tables.map(table =>(
                 <Row>
                     <Card className='my-3 p-3 rounded'>
                             <Card.Body>
@@ -40,12 +54,11 @@ const OrderedScreen = () => {
                                 </ListGroup>
                             </Card.Body>
                         </Card>
-                </Row> 
-            :<h3>No order</h3>}
+                </Row>
 
-            <Button variant="outline-secondary" type='button' onClick={checkOrderHandler} disabled={!table.isOrder}>Bill</Button>
+            ))}
         </div>
     )
 }
 
-export default OrderedScreen
+export default CashierScreen

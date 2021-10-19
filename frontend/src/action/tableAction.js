@@ -49,6 +49,14 @@ export const clearOrder = (id) => async(dispatch) =>{
     })
 }
 
+export const checkOrder = (id) => async(dispatch) =>{
+    const {data} = await axios.put(`api/tables/check/${id}`)
+    dispatch({
+        type: 'CHECK_ORDER',
+        payload:{table:data}
+    })
+}
+
 export const tableList = (zone) => async(dispatch)=>{
     try{
         const {data} = await axios.get(`api/tables/${zone}`)

@@ -10,7 +10,7 @@ const TableZone = (props) => {
     const [tables, settables] = useState([])
     useEffect(() => {
         const fetchData = async() =>{
-            const {data} = await axios.get(`/api/tables/${props.zone}`)
+            const {data} = await axios.get(`/api/tables/zone/${props.zone}`)
             settables(data)
         }
         fetchData()
@@ -25,7 +25,7 @@ const TableZone = (props) => {
                                 <Card.Title>Zone {props.zone}</Card.Title>
                                 <ListGroup variant='flush'>
                                     {tables.sort().map(table =>(
-                                        <ListGroup.Item onClick={()=> dispatch((selectTable(table._id)))}>{table.name}</ListGroup.Item>
+                                        <ListGroup.Item style={{color:table.isOrder ? 'blue' :'black'}} onClick={()=> dispatch((selectTable(table._id)))}>{table.name}</ListGroup.Item>
                                     ))}
                                 </ListGroup>
                             </Card.Body>

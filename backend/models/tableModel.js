@@ -14,7 +14,6 @@ const tableSchema = mongoose.Schema({
         qty:{type:Number, required:true},
         price:{type:Number, required:true},
         isDelivered:{type:Boolean,default:false, required:true},
-        isCooked:{type:Boolean,default:false, required:true},
         menu:{type:mongoose.Schema.Types.ObjectId,ref:'Menu', required:true},
     }],
     isPaid:{
