@@ -1,6 +1,9 @@
 import React ,{useEffect,useState} from 'react'
 import axios from 'axios'
 import { Row,Card,ListGroup, Col } from 'react-bootstrap'
+import socketIOClient from 'socket.io-client'
+
+const socket = socketIOClient('http://localhost:5000',{autoConnect:false})
 
 const CashierScreen = () => {
     const [tables, settable] = useState([])
@@ -16,8 +19,9 @@ const CashierScreen = () => {
                         table.order.splice(i,1)
                     }else{
                         tempname.push(item.name)
-                    }
+                    }return item
                 })
+                return table
             })
             settable(data)
         }
@@ -55,7 +59,6 @@ const CashierScreen = () => {
                             </Card.Body>
                         </Card>
                 </Row>
-
             ))}
         </div>
     )

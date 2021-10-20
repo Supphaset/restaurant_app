@@ -5,10 +5,10 @@ import MenuCat from './MenuCat'
 
 const MenuList = (props) => {
     switch(props.cat){
-        case '1':
+        case '5':
             return(
                 <>
-                <MenuCat cat={'Recommend'} rec={true}/>
+                <MenuCat cat={'Soup'}/>
                 </>
             )
         case '2':
@@ -32,7 +32,7 @@ const MenuList = (props) => {
         default:
             return(
                 <>
-                <MenuCat cat={'Soup'}/>
+                <MenuCat cat={'Recommend'} rec={true}/>
                 </>
             )
     }

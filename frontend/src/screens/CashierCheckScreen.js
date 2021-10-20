@@ -24,7 +24,9 @@ const CashierCheckScreen = () => {
                     }else{
                         tempname.push(item.name)
                     }
+                    return item
                 })
+                return table
             })
             settable(data)
         }
