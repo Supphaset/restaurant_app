@@ -8,7 +8,6 @@ const CashierCheckScreen = () => {
     const dispatch = useDispatch()
     const clearHandler = (id) =>{
         dispatch(clearOrder(id))
-        window.location.reload(false);
     }
     const [tables, settable] = useState([])
     useEffect(() => {
@@ -32,7 +31,7 @@ const CashierCheckScreen = () => {
         }
         fetchData()
         
-    },[])
+    },[tables])
     return (
         <div>
             <h1>Checking Screen</h1>

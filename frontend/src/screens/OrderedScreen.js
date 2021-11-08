@@ -3,12 +3,11 @@ import { Button, Col, Row, Card, ListGroup } from 'react-bootstrap'
 import {useDispatch, useSelector} from 'react-redux'
 import { checkOrder } from '../action/tableAction'
 
-
 const OrderedScreen = () => {
     const table  = useSelector(state =>state.table.table)
     const dispatch = useDispatch()
     const checkOrderHandler = () => {
-        dispatch(checkOrder(table._id))
+        dispatch(checkOrder(table._id))  
     }
     return (
         <div>

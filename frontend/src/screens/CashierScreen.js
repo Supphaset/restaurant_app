@@ -1,9 +1,6 @@
 import React ,{useEffect,useState} from 'react'
 import axios from 'axios'
 import { Row,Card,ListGroup, Col } from 'react-bootstrap'
-import socketIOClient from 'socket.io-client'
-
-const socket = socketIOClient('http://localhost:5000',{autoConnect:false})
 
 const CashierScreen = () => {
     const [tables, settable] = useState([])
@@ -27,7 +24,7 @@ const CashierScreen = () => {
         }
         fetchData()
         
-    },[])
+    },[tables])
     return (
         <div>
             <h1>CashierScreen</h1>
